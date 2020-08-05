@@ -50,4 +50,5 @@ jobs:
           VALIDATE_ALL_CODEBASE: true
           DEFAULT_BRANCH: trunk
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_TERRAFORM: true 
+          VALIDATE_TERRAFORM: true
+          OUTPUT_DETAILS: detailed
