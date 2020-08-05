@@ -9,9 +9,9 @@ resource "docker_container" "gitlab" {
     restart = "on-failure"
     must_run = true
 
-    hostname = "work.0xa1.link"
+    hostname = "hq.0xa1.red"
     env = [
-        "GITLAB_OMNIBUS_CONFIG=gitlab_rails['gitlab_shell_ssh_port'] = 2233;"
+        "GITLAB_OMNIBUS_CONFIG=gitlab_rails['gitlab_shell_ssh_port']=2233;"
     ]
 
     healthcheck {
@@ -69,17 +69,17 @@ resource "null_resource" "nginx" {
     provisioner "remote-exec" {
         inline = [
             "chmod +x /tmp/prepare.sh",
-            "/tmp/prepare.sh 0xa1.link work"
+            "/tmp/prepare.sh 0xa1.red hq"
         ]
     }
 
     provisioner "file" {
         content = templatefile("${path.module}/files/nginx.conf.tpl", {
             gitlab_ip = docker_container.gitlab.ip_address,
-            domain = "0xa1.link",
-            subdomain = "work"
+            domain = "0xa1.red",
+            subdomain = "hq"
         })
-        destination = "/etc/nginx/sites-available/0xa1.link/work"
+        destination = "/etc/nginx/sites-available/0xa1.red/hq"
     }
 
     provisioner "file" {
@@ -89,7 +89,7 @@ resource "null_resource" "nginx" {
     provisioner "remote-exec" {
         inline = [
             "chmod +x /tmp/enable.sh",
-            "/tmp/enable.sh 0xa1.link work"
+            "/tmp/enable.sh 0xa1.red hq"
         ]
     }
 
