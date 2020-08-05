@@ -1,15 +1,15 @@
 variable "ssh_user" {
-    type = string
+  type = string
 }
 
 variable "ssh_host" {
-    type = string
+  type = string
 }
 
 variable "ssh_port" {
-    type = number
+  type = number
 }
 
 variable "pvt_key" {
-    type = string
+  type = string
 }
