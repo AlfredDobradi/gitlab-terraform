@@ -1,5 +1,5 @@
 module "gitlab" {
-    source = "./modules/core"
+  source = "./modules/core"
 
     ssh_user = var.ssh_user
     ssh_host = var.ssh_host
